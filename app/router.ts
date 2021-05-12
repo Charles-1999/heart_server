@@ -6,5 +6,10 @@ export default (app: Application) => {
   // router.get('/', controller.home.index);
 
   router.get('/data', controller.home.get);
+  router.get('/indexData', controller.home.indexData);
   router.post('/data', controller.home.upload);
+
+  router.get('/tips', controller.tips.getTips);
+
+  router.get('/login', controller.account.login)
 };

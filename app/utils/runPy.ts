@@ -2,9 +2,10 @@
 import * as child_process from 'child_process';
 const util = require('util');
 
-export default async function runPyCode(data) {
+export default async function runPyCode(data, type) {
   const exec = util.promisify(child_process.exec);
-  const { stdout, stderr } = await exec(`python3 app/python/main.py 0 "${data}"`)
+  console.log(type)
+  const { stdout, stderr } = await exec(`python3 app/python/main.py ${type} "${data}"`);
   console.log('stdout: ' + stdout);
   console.log('stderr: ' + stderr);
   const res = /#(.*)#/.exec(stdout);

@@ -6,7 +6,10 @@ export default class HomeController extends Controller {
    */
   public async upload() {
     const { ctx } = this;
-    ctx.body = await ctx.service.home.uploadData(ctx.request.body);
+
+    const userId = await ctx.service.account.getUserId(ctx.request.header.openid as string)
+
+    ctx.body = await ctx.service.home.uploadData(userId, ctx.request.body);
   }
 
   /**
@@ -14,6 +17,21 @@ export default class HomeController extends Controller {
    */
   public async get() {
     const { ctx } = this;
-    ctx.body = await ctx.service.home.getData(Number(ctx.query.limit));
+
+    const userId = await ctx.service.account.getUserId(ctx.request.header.openid as string)
+
+    ctx.body = await ctx.service.home.getData(userId, Number(ctx.query.limit));
+  }
+
+  /**
+   * 获取首页数据
+   * 今天和昨天记录
+   */
+  public async indexData() {
+    const { ctx } = this;
+
+    const userId = await ctx.service.account.getUserId(ctx.request.header.openid as string)
+
+    ctx.body = await ctx.service.home.getIndexData(userId);
   }
 }

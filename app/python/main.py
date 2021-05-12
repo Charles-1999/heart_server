@@ -21,13 +21,15 @@ def main(mode, frame_data):
     # data processing
     frame_data = eval(frame_data)
     fps = len(frame_data) / 12.0
-    print(len(frame_data))
+    print(len(frame_data), fps)
     data_before_fit = []
     if mode == '0':
         print('enter')
-        data_before_fit = by_brightness.get_brightness_data(frame_data[int(fps):int(fps)*11])
+        # data_before_fit = by_brightness.get_brightness_data(frame_data[int(fps):int(fps)*11])
+        data_before_fit = by_brightness.get_brightness_data(frame_data)
     elif mode == '1':
         data_before_fit = np.array(frame_data[int(fps):int(fps)*11])[:,0]
+        # data_before_fit = np.array(frame_data)[:,0]
     # elif mode == 2:
     #     data_before_fit =
 

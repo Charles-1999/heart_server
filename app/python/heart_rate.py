@@ -1,5 +1,6 @@
 def get_heart_rate_variability(heart_rate_frame_data, fps):
     print('Begin HRV')
+    print(heart_rate_frame_data)
     heart_rate_distance = []
     heart_rates = []
     for _index in range(1, len(heart_rate_frame_data)):
