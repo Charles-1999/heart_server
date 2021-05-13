@@ -11,5 +11,5 @@ export default (app: Application) => {
 
   router.get('/tips', controller.tips.getTips);
 
-  router.get('/login', controller.account.login)
+  router.post('/login', controller.account.login)
 };

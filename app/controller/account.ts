@@ -7,8 +7,7 @@ export default class LoginController extends Controller {
   public async login() {
     const { ctx } = this
 
-    const js_code = ctx.query.code
-    const res = await ctx.service.account.login(js_code)
+    const res = await ctx.service.account.login(ctx.request.body)
 
     ctx.body = res
   }

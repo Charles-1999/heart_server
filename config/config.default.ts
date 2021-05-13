@@ -54,10 +54,10 @@ export default (appInfo: EggAppInfo) => {
   config.cluster = {
     listen: {
       port: 7002,
-      // hostname: '192.168.31.25'
+      hostname: '192.168.31.25'
       // hostname: '10.20.57.12'
       // hostname: '172.20.10.12'
-      hostname: '172.19.28.172'
+      // hostname: '172.19.28.172'
     }
   }
 
