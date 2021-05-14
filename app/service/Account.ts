@@ -22,7 +22,7 @@ export default class Login extends Service {
     // const result = await this.app.mysql.get("user", { openid })
     const id = await this.getUserId(openid)
 
-    if (!id) {
+    if (id === -1) {
       // 若不存在，插入数据
       await this.app.mysql.insert("user", { openid, nickName, gender, language, city, province, country, avatarUrl })
     } else {
