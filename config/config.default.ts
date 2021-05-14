@@ -44,6 +44,7 @@ export default (appInfo: EggAppInfo) => {
       password: '12345',
       // database
       database: 'heart',
+      charset: "UTF8MB4_GENERAL_CI"
     },
     // load into app, default is open
     app: true,
@@ -54,8 +55,8 @@ export default (appInfo: EggAppInfo) => {
   config.cluster = {
     listen: {
       port: 7002,
-      hostname: '192.168.31.25'
-      // hostname: '10.20.57.12'
+      // hostname: '192.168.31.25'
+      hostname: '10.20.49.23'
       // hostname: '172.20.10.12'
       // hostname: '172.19.28.172'
     }
