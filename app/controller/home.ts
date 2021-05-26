@@ -24,6 +24,17 @@ export default class HomeController extends Controller {
   }
 
   /**
+   * 获取打卡日历
+   */
+  public async getDate() {
+    const {ctx} = this
+
+    const userId = await ctx.service.account.getUserId(ctx.request.header.openid as string)
+
+    ctx.body = await ctx.service.home.getDate(userId)
+  }
+
+  /**
    * 获取首页数据
    * 今天和昨天记录
    */

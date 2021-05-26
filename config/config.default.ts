@@ -52,16 +52,6 @@ export default (appInfo: EggAppInfo) => {
     agent: false,
   }
 
-  config.cluster = {
-    listen: {
-      port: 7002,
-      // hostname: '192.168.31.25'
-      hostname: '10.20.49.23'
-      // hostname: '172.20.10.12'
-      // hostname: '172.19.28.172'
-    }
-  }
-
   // the return config will combines to EggAppConfig
   return {
     ...config,

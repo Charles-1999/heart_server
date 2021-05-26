@@ -35,6 +35,25 @@ export default class Home extends Service {
   }
 
   /**
+   * 获取打卡日历
+   */
+  public async getDate(userId: number) {
+    const data = await this.app.mysql.query(`select * from data
+    where id in (select max(id) as id
+    from 
+    (
+    select DATE_FORMAT(d.timestamp, '%Y-%m-%d') date, a.*
+    from data d, (select * from data) a
+    where d.user_id = ${userId}
+    and d.user_id = a.user_id
+    and DATE_FORMAT(d.timestamp, '%Y-%m-%d') = DATE_FORMAT(a.timestamp, '%Y-%m-%d')
+    ) d
+    group by d.date)
+    order by id desc`)
+    return data
+  }
+
+  /**
    * get index data
    */
   public async getIndexData(userId: number) {
