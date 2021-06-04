@@ -1,6 +1,7 @@
 import { Service } from 'egg';
 // import Data from '../model/data';
 import runPyCode from '../utils/runPy';
+import { WXBizDataCrypt } from "../utils/WXBizDataCrypt"
 
 /**
  * Home Service
@@ -62,5 +63,16 @@ export default class Home extends Service {
     today.length == 0 ? today = [{}] : null;
     yesterday.length == 0 ? yesterday = [{}] : null;
     return [...today, ...yesterday];
+  }
+
+  /**
+   * 获取微信运动数据
+   */
+  public async getRunData(body: any) {
+    const pc = new WXBizDataCrypt("wx9b70ad6f4f545da4", body.session_key)
+
+    const data = pc.decryptData(body.encryptedData, body.iv)
+
+    return data
   }
 }

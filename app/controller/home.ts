@@ -45,4 +45,16 @@ export default class HomeController extends Controller {
 
     ctx.body = await ctx.service.home.getIndexData(userId);
   }
+
+  /**
+   * 获取微信运动数据 
+   */
+  public async getRunData() {
+    const { ctx } = this
+
+    // const userId = await ctx.service.account.getUserId(ctx.request.header.openid as string)
+
+    ctx.body = await ctx.service.home.getRunData(ctx.request.body);
+
+  }
 }

@@ -9,6 +9,7 @@ export default (app: Application) => {
   router.get('/data/date', controller.home.getDate);
   router.get('/indexData', controller.home.indexData);
   router.post('/data', controller.home.upload);
+  router.post('/data/run', controller.home.getRunData)
 
   router.get('/tips', controller.tips.getTips);
 

@@ -16,7 +16,7 @@ export default class Login extends Service {
     const res = await this.ctx.curl(`https://api.weixin.qq.com/sns/jscode2session?appid=${APPID}&secret=${SECRET}&js_code=${js_code}&grant_type=authorization_code`, {
       dataType: 'json'
     })
-    const { openid } = res.data
+    const { openid, session_key } = res.data
 
     // 查询是否存在用户
     // const result = await this.app.mysql.get("user", { openid })
@@ -30,7 +30,7 @@ export default class Login extends Service {
       await this.app.mysql.update("user", { id, nickName, gender, language, city, province, country, avatarUrl })
     }
 
-    return { openid }
+    return { openid, session_key }
   }
 
   /**
